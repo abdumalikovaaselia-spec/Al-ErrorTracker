@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="kk">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>PhysicsTreker — Қателерді сақтайтын ЖИ (модель)</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo">PT</div>
+      <div>
+        <div class="title">PhysicsTreker</div>
+        <div class="subtitle">9-сынып: қателерді есте сақтайтын ЖИ жүйесі (модель)</div>
+      </div>
+    </div>
+    <button id="btnLogout" class="btn ghost hidden">Шығу</button>
+  </header>
+
+  <main class="container">
+    <!-- LOGIN -->
+    <section id="screenLogin" class="card">
+      <h1>Кіру</h1>
+      <p class="muted">Оқушы тест тапсырады → қате болса “Қатемен жұмыс” міндетті → түзетпейінше қайта тапсыра алмайды.</p>
+
+      <div class="grid2">
+        <div class="field">
+          <label>Рөл</label>
+          <select id="role">
+            <option value="student">Оқушы</option>
+            <option value="teacher">Мұғалім</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Сынып (оқушы үшін)</label>
+          <input id="className" placeholder="мысалы: 9A" />
+        </div>
+      </div>
+
+      <div class="grid2">
+        <div class="field">
+          <label>Логин</label>
+          <input id="login" placeholder="мысалы: aida9a" />
+        </div>
+        <div class="field">
+          <label>Пароль</label>
+          <input id="password" type="password" placeholder="••••" />
+        </div>
+      </div>
+
+      <div class="row wrap">
+        <button id="btnLogin" class="btn primary">Кіру</button>
+        <button id="btnSeed" class="btn">Демо қолданушыларды қосу</button>
+      </div>
+
+      <details class="hint">
+        <summary>Демо логиндер</summary>
+        <ul>
+          <li><b>Оқушы:</b> aida9a / 1111 (9A)</li>
+          <li><b>Оқушы:</b> dias9a / 2222 (9A)</li>
+          <li><b>Оқушы:</b> diana9a / 1141 (9Ә)</li>
+          <li><b>Мұғалім:</b> teacher / admin</li>
+        </ul>
+      </details>
+    </section>
+
+    <!-- STUDENT -->
+    <section id="screenStudent" class="hidden">
+      <div class="card">
+        <div class="row between">
+          <div>
+            <h2>Оқушы кабинеті</h2>
+            <div id="studentMeta" class="muted"></div>
+          </div>
+          <div class="pill" id="statusPill">Статус: —</div>
+        </div>
+
+        <div class="grid2" style="margin-top:10px">
+          <div class="field">
+            <label>Тақырыпты таңда</label>
+            <select id="topicSelect"></select>
+          </div>
+          <div class="field">
+            <label>Ереже</label>
+            <div class="muted">Қатемен жұмыс өтпейінше: қайта тапсыру/жіберу болмайды</div>
+          </div>
+        </div>
+
+        <div class="row wrap">
+          <button id="btnStartTest" class="btn primary">Тестті бастау</button>
+          <button id="btnGoCorrections" class="btn">Қатемен жұмыс</button>
+          <button id="btnSendToTeacher" class="btn success" disabled>Мұғалімге нәтижені жіберу</button>
+        </div>
+
+        <div class="divider"></div>
+        <div id="studentArea"></div>
+      </div>
+    </section>
+
+    <!-- TEACHER -->
+    <section id="screenTeacher" class="hidden">
+      <div class="card">
+        <div class="row between">
+          <div>
+            <h2>Мұғалім панелі</h2>
+            <div class="muted">Нәтижелер және “ең көп қате кеткен сұрақтар”</div>
+          </div>
+          <div class="row wrap">
+            <button id="btnShowResults" class="btn">Нәтижелер</button>
+            <button id="btnTopMistakes" class="btn primary">Қай сұрақтан көп қате</button>
+            <button id="btnClearAll" class="btn danger">Деректі тазалау</button>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+        <div id="teacherArea"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span>© PhysicsTreker — демо прототип</span>
+    <span class="muted">localStorage (браузер ішінде)</span>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
